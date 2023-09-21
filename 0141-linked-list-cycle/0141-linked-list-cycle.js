@@ -10,20 +10,14 @@
  * @param {ListNode} head
  * @return {boolean}
  */
-var hasCycle = function(head) {
-  let slow = head;
-  let fast = head;
-
-  while (fast && fast.next) {
-
-    // Move slow by 1, fast by 2
-    slow = slow.next;
-    fast = fast.next.next;
-
-    // If fast catches slow, return true
-    if (slow === fast) return true;
-  }
-  
-  // If fast hits null, no cycle
-  return false;
+const hasCycle = (head) => {
+	if (!head) return false;
+	let slow = head;
+	let fast = head.next;
+	while (slow !== fast) {
+		if (!fast || !fast.next) return false;
+		slow = slow.next;
+		fast = fast.next.next;
+	}
+	return true;
 };
